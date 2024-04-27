@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todolist</title>
+    <link rel="stylesheet" href="./Style.css"/>
+</head>
+<body>
+    <form>
+        <h1>Todo List</h1>
+        <label for="title">Título</label>
+        <input type="text" id="title" required>
+        <label for="description">Descrição</label>
+        <textarea name="" id="description" rows="8" cols="20" required></textarea>
+        <div id="btns">
+            <button id="btnGuardar">Guardar</button>
+            <button id="btnMosterar" onclick="mostrar()">Mostrar</button>
+        </div>
+    </form>
+    <script src="Script.js"></script>
+</body>
+</html>

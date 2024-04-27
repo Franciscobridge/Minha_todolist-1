@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List de tarefas</title>
+    <link rel="stylesheet" href="Mostrar.css"/>
+</head>
+<body>
+    <form>
+        <h1>Tarefas</h1>
+    </form>
+    
+    
+    <script src="../Script.js"></script>
+    <script>
+        function exibirDados() {
+
+            const dadosArmazenados = JSON.parse(localStorage.getItem('dados')) || [];
+            
+            if (dadosArmazenados.length > 0) {
+                const lista = document.createElement('ul');
+        
+                dadosArmazenados.forEach((dados, index) => {
+                    const itemLista = document.createElement('li');
+                    itemLista.textContent = `${index + 1}- ${dados.titulo} ${dados.descricao.length !== 0 ? ': ' + dados.descricao : ''}`;;
+                    
+                    const btnEliminar = document.createElement('button');
+                    btnEliminar.textContent = 'Delete';
+                    
+                    btnEliminar.addEventListener('click', () => {
+                        eliminarTarefa(index);
+                    });
+        
+                    itemLista.appendChild(btnEliminar);
+        
+                    lista.appendChild(itemLista);
+                });
+        
+                document.body.appendChild(lista);
+            } 
+        }
+        
+        function eliminarTarefa(index) {
+            const dadosArmazenados = JSON.parse(localStorage.getItem('dados')) || [];
+            dadosArmazenados.splice(index, 1);
+            
+            localStorage.setItem('dados', JSON.stringify(dadosArmazenados));
+            location.reload();
+        }
+        
+        exibirDados();
+    </script>
+</body>
+</html>
